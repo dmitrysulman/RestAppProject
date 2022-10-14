@@ -19,11 +19,6 @@ public class SensorServiceImpl implements SensorService {
     }
 
     @Override
-    public Optional<Sensor> findByName(String name) {
-        return sensorRepository.findByName(name);
-    }
-
-    @Override
     public boolean existsByName(String name) {
         return sensorRepository.existsByName(name);
     }
