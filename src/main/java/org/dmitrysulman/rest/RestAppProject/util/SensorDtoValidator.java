@@ -1,14 +1,13 @@
 package org.dmitrysulman.rest.RestAppProject.util;
 
 import org.dmitrysulman.rest.RestAppProject.dto.SensorDto;
-import org.dmitrysulman.rest.RestAppProject.models.Sensor;
 import org.dmitrysulman.rest.RestAppProject.services.SensorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import java.util.Optional;
-
+@Component
 public class SensorDtoValidator implements Validator {
     private final SensorService sensorService;
 
