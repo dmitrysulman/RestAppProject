@@ -15,14 +15,10 @@ import java.time.Instant;
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        StringBuilder message = new StringBuilder();
+        ErrorResponse errorResponse = new ErrorResponse(status.getReasonPhrase(), Instant.now(), status.value());
         for (FieldError fieldError : ex.getFieldErrors()) {
-            message.append(fieldError.getField())
-                    .append(": ")
-                    .append(fieldError.getDefaultMessage())
-                    .append(";");
+            errorResponse.addValidationError(fieldError);
         }
-        ErrorResponse errorResponse = new ErrorResponse(message.toString(), Instant.now(), status.value());
         return handleExceptionInternal(ex, errorResponse, headers, status, request);
     }
 }

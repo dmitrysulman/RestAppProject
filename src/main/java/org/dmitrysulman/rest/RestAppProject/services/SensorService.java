@@ -11,5 +11,5 @@ public interface SensorService {
 
     boolean existsByName(String name);
 
-    void save(Sensor sensor);
+    Sensor save(Sensor sensor);
 }

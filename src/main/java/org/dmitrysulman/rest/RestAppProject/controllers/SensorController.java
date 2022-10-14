@@ -34,11 +34,6 @@ public class SensorController {
 
     @PostMapping("/registration")
     public ResponseEntity<Void> registerSensor(@RequestBody @Valid SensorDto sensorDto) {
-//        if (bindingResult.hasErrors()) {
-//            //TODO
-////            throw new MethodArgumentNotValidException("sad", bindingResult);
-//            return ResponseEntity.noContent().build();
-//        }
         sensorService.save(modelMapper.map(sensorDto, Sensor.class));
         return ResponseEntity.noContent().build();
     }
