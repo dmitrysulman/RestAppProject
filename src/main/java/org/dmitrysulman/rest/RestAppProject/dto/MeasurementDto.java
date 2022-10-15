@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.time.Instant;
 
 public class MeasurementDto {
     @NotNull(message = "Value should not be empty")
@@ -15,8 +16,11 @@ public class MeasurementDto {
     @NotNull(message = "Raining should not be empty")
     private Boolean raining;
 
+    @NotNull(message = "Sensor should not be empty")
     @JsonProperty("sensor")
     private SensorDto sensor;
+
+    private Instant createdAt;
 
     public MeasurementDto() {
     }
@@ -43,5 +47,13 @@ public class MeasurementDto {
 
     public void setSensor(SensorDto sensor) {
         this.sensor = sensor;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
     }
 }

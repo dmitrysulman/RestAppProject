@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 public class MeasurementServiceImpl implements MeasurementService {
@@ -26,5 +29,15 @@ public class MeasurementServiceImpl implements MeasurementService {
         Sensor sensor = sensorRepository.findByName(measurement.getSensor().getName()).orElse(null);
         measurement.setSensor(sensor);
         return measurementRepository.save(measurement);
+    }
+
+    @Override
+    public List<Measurement> findAll() {
+        return measurementRepository.findAllByOrderByCreatedAtAsc();
+    }
+
+    @Override
+    public long getRainyDaysCount() {
+        return measurementRepository.getRainyDaysCount().get(0).getRainyDaysCount();
     }
 }

@@ -25,12 +25,8 @@ public class MeasurementDtoValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         MeasurementDto measurementDto = (MeasurementDto) target;
-        if (measurementDto.getSensor() == null) {
-            errors.rejectValue("sensor", "", "Sensor should not be empty");
-        } else {
-            if (!sensorService.existsByName(measurementDto.getSensor().getName())) {
-                errors.rejectValue("sensor", "", "This sensor does not exists");
-            }
+        if (measurementDto.getSensor() != null && !sensorService.existsByName(measurementDto.getSensor().getName())) {
+            errors.rejectValue("sensor", "", "This sensor does not exists");
         }
     }
 }
