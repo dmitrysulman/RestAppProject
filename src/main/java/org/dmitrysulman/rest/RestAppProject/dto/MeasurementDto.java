@@ -1,7 +1,5 @@
 package org.dmitrysulman.rest.RestAppProject.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -17,7 +15,6 @@ public class MeasurementDto {
     private Boolean raining;
 
     @NotNull(message = "Sensor should not be empty")
-    @JsonProperty("sensor")
     private SensorDto sensor;
 
     private Instant createdAt;
