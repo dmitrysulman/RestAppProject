@@ -1,7 +1,6 @@
 package org.dmitrysulman.rest.RestAppProject.util;
 
 import org.dmitrysulman.rest.RestAppProject.dto.MeasurementDto;
-import org.dmitrysulman.rest.RestAppProject.services.MeasurementService;
 import org.dmitrysulman.rest.RestAppProject.services.SensorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
